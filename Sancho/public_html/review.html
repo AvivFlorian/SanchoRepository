@@ -10,12 +10,11 @@
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     </head>
     <body>
-        <div data-role="header">
+        <div data-role="header" data-position="fixed">
             <h1>הכנס ביקורת</h1>
-            <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="edit" data-theme="a" data-transition="pop">Sign in</a>
         </div>
         <form>
-            <table border="2" style="width:80%;" align="center">
+            <table border="0" style="width:80%;" align="center">
                 <tr>
                     <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
                     <td style="width:40%" align="right"><div data-role="fieldcontain">
@@ -26,7 +25,7 @@
                         </div>
                     </td>
                     <td style="width:40%" align="right">? האם קיימת חניית נכים</td>
-                    <td style="width:5%"><img id="parking" src="../images/parking.gif"/> </td>
+                    <td style="width:5%"><img id="parking" src="parking.jpg"/> </td>
                 </tr>
                 <tr>
                     <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
@@ -39,7 +38,7 @@
                         </div>
                     </td>
                     <td style="width:40%" align="right">מרחק החניה מהכניסה למקום</td>
-                    <td style="width:5%"><img id="parking" src="C:\Users\Aviv Florian\Documents\GitHub\SanchoRepository\Sancho\images\parking.gif"/> </td>
+                    <td style="width:5%"><img id="parking" src="parking.jpg"> </td>
                 </tr>
                 <tr>
                     <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
@@ -51,7 +50,7 @@
                         </div>
                     </td>
                     <td style="width:40%" align="right">האם הדרך מהחניה עד הכניסה מותאמת לנכים   </td>
-                    <td style="width:5%"><img id="parking" src="parking.gif"/> </td>
+                    <td style="width:5%"><img id="parking" src="parking.jpg"/> </td>
                 </tr>
                 <tr>
                     <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
@@ -62,8 +61,44 @@
                             </select>
                         </div>
                     </td>
-                    <td style="width:40%" align="right">האם הדלת רחבה מספיק למעבר כיסא גלגלים?</td>
-                    <td style="width:5%"><img id="parking" src="parking.gif"/> </td>
+                    <td style="width:40%" align="right">האם הדלת רחבה מספיק למעבר כיסא גלגלים</td>
+                    <td style="width:5%"><img id="parking" src="door.jpg"/> </td>
+                </tr>
+                <tr>
+                    <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
+                    <td style="width:40%" align="right"><div data-role="fieldcontain">
+                            <select name="flip-1" id="flip-1" data-role="slider">
+                                <option value="off">לא</option>
+                                <option value="on">כן</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td style="width:40%" align="right">האם כיסא גלגלים יכול להתנייע בקלות במקום</td>
+                    <td style="width:5%"><img id="parking" src="move.png"/> </td>
+                </tr>
+                <tr>
+                    <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
+                    <td style="width:40%" align="right"><div data-role="fieldcontain">
+                            <select name="flip-1" id="flip-1" data-role="slider">
+                                <option value="off">לא</option>
+                                <option value="on">כן</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td style="width:40%" align="right">האם יש מדרגות במקום</td>
+                    <td style="width:5%"><img id="parking" src="stairs.png"/> </td>
+                </tr>
+                <tr>
+                    <td style="width:20%" align="center"><a href="#" data-role="button" data-inline="true">הוסף תמונה</a> </td>
+                    <td style="width:40%" align="right"><div data-role="fieldcontain">
+                            <select name="flip-1" id="flip-1" data-role="slider">
+                                <option value="off">לא</option>
+                                <option value="on">כן</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td style="width:40%" align="right">האם קיימים במקום שירותים מותאמים לנכים</td>
+                    <td style="width:5%"><img id="parking" src="toilets.png"/> </td>
                 </tr>
             </table>
         </form>
