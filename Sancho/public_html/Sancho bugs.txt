@@ -1,0 +1,10 @@
+bugs:
+
+1. after refresh hew brew goes to hell
+
+2. photos root ???
+
+3. jquery buttons paper when splash.
+
+4. splash doesn’t work on android.
+
