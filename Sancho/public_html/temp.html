@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sancho</title>
+         <link rel="shortcut icon" href="favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    </head>
+    <body>
+        <div data-role="panel" id="mypanel">
+            <h1> Hello <h1/>
+                
+        </div><!-- /panel -->
+
+        <div data-role="page">
+            <div style="opacity:0.8;position:absolute;center:300px;width:100%;height:100%;background-color: whitesmoke;background-image:url(restaurant.jpg)"></div>
+            <div data-role="header">
+                <h1>Sancho</h1>
+                <a href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="edit" data-theme="a" data-transition="pop">Sign in</a>
+            </div>
+            <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+                <form>
+                    <div style="padding:10px 20px;">
+                        <h3>Please sign in</h3>
+                        <label for="un" class="ui-hidden-accessible">Username:</label>
+                        <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+                        <label for="pw" class="ui-hidden-accessible">Password:</label>
+                        <input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+                        <button href="#" type="submit" data-theme="b" data-icon="check">Sign in</button>
+                    </div>
+                </form>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <p> 
+                     <a href="#mypanel" data-role="button" data-inline="true">Panel</a>
+
+                </p>
+            </div><!-- /content -->
+
+            <div data-role="footer" data-id="foo1" data-position="fixed" >
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="search.html"  data-icon="search">Search</a></li>
+                        <li><a href="profile.html"  data-transition="slide" data-icon="profile">Profile</a></li>
+                        <li><a href="#"  data-icon="gear">Settings</a></li>
+                        <li><a href="#"  data-icon="info" >Info</a></li>
+                        <li><a href="#"  data-icon="image"">Take picture</a></li>
+                    </ul>
+                </div><!-- /navbar -->
+            </div><!-- /footer -->
+
+
+        </div><!-- /page -->
+
+    </body>
+</html>
+
+
+
+
+</body>
+</html>
