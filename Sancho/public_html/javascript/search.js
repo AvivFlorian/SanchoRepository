@@ -1,14 +1,14 @@
 function search() {
-        alert($("#search").val());
+        alert($("#search1").val());
 }
 
 $(document).ready(function() {       
-    $("#search").keyup(function(event){
+    $("#search1").keyup(function(event){
     if(event.keyCode === 13){
         search();
     }
     
-    $("#Submit_search").click(function(){
+    $("#submit_search").click(function(){
         
             search();   
 });
