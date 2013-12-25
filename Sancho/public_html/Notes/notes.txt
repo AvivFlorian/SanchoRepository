@@ -26,4 +26,9 @@ template for what Ido tought us
           <div class="splash">
               <img src="SanchoIcon.jpg">
           </div>
-    
+   
+
+
+Sweep on a result of a map
+
+can the log  of the restaurant can be shown on results restaurant
