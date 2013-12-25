@@ -2,19 +2,15 @@ function search() {
         alert($("#search").val());
 }
 
-$(document).ready(function() {
-       
-    $("#Submit_search").click(search());
-    
-    });
-
-$(document).ready(function() {
-       
+$(document).ready(function() {       
     $("#search").keyup(function(event){
-    if(event.keyCode == 13){
+    if(event.keyCode === 13){
         search();
     }
+    
+    $("#Submit_search").click(function(){
+        
+            search();   
 });
  
-});
-
+});});
