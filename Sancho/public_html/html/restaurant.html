@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Sancho - restaurant</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> 
+    </head>
+    <body>
+        <div data-role="header">
+            </br>
+            <h1 id="res_name">ג'ירף בר גריל אסייתי</h1>
+            <a href="search.html"  data-role="button" data-inline="true" data-icon="back" data-theme="a" >חזור</a>
+            <a href="http://www.giraffe.co.il/" id="res_website" data-role="button" data-inline="true" data-mini="true">אתר המסעדה</a>
+            </br>
+            </br>
+        </div>
+        <div>
+            <article id="res_address">
+                <label id="res_name">הסדנאות 9 הרצליה</label>
+                </br>
+
+                </br>
+                </br>
+            </article>
+            <article id="access_title" >
+                <h4 id="res_name"> נגישות המקום</h4>
+            </article>
+            <article id="res_icons">
+                <table border="0" style="width:80%;" align="center">
+                    <tr>
+                        <td style="width:50%;" align="center"><img src="../images/toilets_x.png" alt="" id="toilets_photo" class="centerimg">
+                            <p><label id="dis_from_loc">שירותים נגישים</label></p>
+                            </br></br></td>
+                        <td style="width:50%;" align="center"><img src="../images/door_v.png" alt="" id="door_photo" class="centerimg">
+                            <p><label id="dis_from_loc">כניסה נגישה</label></p>
+                            </br></br></td>
+                        <!--<td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td><!-->
+                    </tr>
+                    <tr>
+                        <td style="width:50%;" align="center"><img src="../images/wheelchairmovementicon_.png" alt="" id="wheelchairmovementicon_photo" class="centerimg">
+                            <p><label id="dis_from_loc">תנועה קלה במקום</label></p>
+                            </br></br></td>
+                        <td style="width:50%;" align="center"><img src="../images/parking_v.png" alt="" id="parking_photo" class="centerimg">
+                            <p><label id="dis_from_loc">קיימת חניה</label></p>
+                            </br></br></td>        
+                    </tr>
+                </table>
+            
+            
+                <div align="left">
+                     <a href="#popupGir" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="../images/pic_gallery.png" width="60" height="60"></a>
+                        <label id="res_name">תמונות מהמקום</label>
+                   
+                    <a href="#" data-theme="" id="update_icon" class="centerimg"> <img src="../images/update_icon.jpg" width="60" height="60"></a>
+                        <label id="res_name">עדכן</label>
+                    </div>
+                    <div data-role="popup" id="popupGir" data-overlay-theme="a" data-theme="d" data-corners="false">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popphoto" src="../images/gir_in.jpg" style="max-height:512px;" alt="#">
+                    </div>
+            </article>
+            <article id="text_reviews_title" >
+                <h4 id="res_name"> ביקורות הגולשים</h4>
+            </article>
+        </div>
+    </body>
+</html>

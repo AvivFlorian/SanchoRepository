@@ -22,7 +22,7 @@ body{text-align:  right}
 }
 
 
-article{
+#res_title{
 	background: lightblue;
 	border: 1px solid black;
 	padding: 5px;
@@ -31,6 +31,34 @@ article{
         
 }
 
+#res_head{
+        text-align: center;
+        font-size: 32px;
+	background: lightgray;
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 5px;
+        width: 100%;
+        
+}
+
+#access_title{
+        text-align: end;
+        background: lightgray;
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 5px;
+        width: 100%;
+}
+
+#text_reviews_title{
+        text-align: right;
+        background: lightgray;
+	border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 5px;
+        width: 100%;
+}
 #main_section{
 	float: right;
 	width: 90%;
@@ -38,7 +66,7 @@ article{
 }
 
 
-table
+#search_table
 {
     
    border-collapse:collapse;
