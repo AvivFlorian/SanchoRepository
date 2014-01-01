@@ -21,65 +21,27 @@ body{text-align:  right}
     margin-right: auto;
 }
 
-
-#res_title{
-	background: lightblue;
-	border: 1px solid black;
-	padding: 5px;
-	margin-bottom: 5px;
-        width: 100%;
-        
-}
-
-#res_head{
-        text-align: center;
-        font-size: 32px;
-	background: lightgray;
-	border: 1px solid black;
-	padding: 5px;
-	margin-bottom: 5px;
-        width: 100%;
-        
-}
-
-#access_title{
-        text-align: end;
-        background: lightgray;
-	border: 1px solid black;
-	padding: 5px;
-	margin-bottom: 5px;
-        width: 100%;
-}
-
-#text_reviews_title{
-        text-align: right;
-        background: lightgray;
-	border: 1px solid black;
-	padding: 5px;
-	margin-bottom: 5px;
-        width: 100%;
-}
 #main_section{
-	float: right;
-	width: 90%;
-	margin: 30px; /* 720px, 280 left*/
+    float: right;
+    width: 90%;
+    margin: 30px; /* 720px, 280 left*/
 }
 
 
 #search_table
 {
-    
-   border-collapse:collapse;
+
+    border-collapse:collapse;
 }
 tr
 {
-   border-bottom: 1px solid #000;
+    border-bottom: 1px solid #000;
 }
 tr.last
 {
-   border-bottom: none;
+    border-bottom: none;
 }
 #search1{
     text-align: center;
-    
+
 }
