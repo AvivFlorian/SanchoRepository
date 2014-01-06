@@ -1,15 +1,95 @@
 <html>
     <head>
-        <title>Sancho - search</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-        <link rel="stylesheet" href="../css/search.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Google Maps - jQuery Mobile Demos</title>
+	<link rel="stylesheet" href="../css/themes/default/jquery.mobile-1.4.0.min.css">
+	<style>
+	.segmented-control { text-align:center; }
+	.segmented-control .ui-controlgroup { display:inline; margin:.2em 0px; }
 
-        <script src="../javascript/map.js"></script> 
-    </head>
+	#map-page { width:100%; height:100%; }
+	#map-canvas { width:100%; height:100%; margin-top:-30px; padding:0px!important; }
+	#gmap-marker-link { color:#00a0df; text-decoration:none; }
+
+	.ui-gmap-canvas { width:100%; height:100%; }
+	.ui-gmap-infobox { display:none; }
+
+	#show-more .ui-li-heading { text-align:center; }
+	#show-more .ui-icon { visibility:hidden; }
+
+	.ui-li-has-count .ui-li-count { border-color:transparent; }
+	.wrap { white-space:normal; }
+	</style>
+	<link rel="stylesheet" href="../_assets/css/jqm-demos.css">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<script src="../js/jquery.js"></script>
+	<script src="../_assets/js/index.js"></script>
+	<script src="../js/jquery.mobile-1.4.0.min.js"></script>
+	<!-- Google Maps JS assets are loaded at bottom of page for performance -->
+	<script>
+	$( document ).on( "pagecreate", "#map-page", function() {
+		var $mapSwitch = $( "#map-switch" ),
+		    $listSwitch = $( "#list-switch" ),
+			$map = $( "#map-canvas" ),
+	        $list = $( "#list-canvas" );
+
+	    $mapSwitch.on( "click", function( e ){
+	       	$map.show();
+	       	$map.gmap();
+	       	$list.hide();
+	    });
+
+	    $listSwitch.on( "click", function( e ){
+	       	$list.show();
+			$map.hide();
+	    });
+
+	    $( "#show-more a" ).on( "click", function( e ){
+			// Assume we already have a cached geolocation because it's not necessary for this example.
+			var location = location || {};
+			    location.coords = location.coords || {};
+				location.coords.latitude = location.coords.latitude || {};
+				location.coords.longitude = location.coords.longitude || {};
+
+			JQM.geo.startIndex = $( "#list-results li" ).size() -1; // exclude show more list item
+	    	JQM.geo.showMore( location );
+	    	e.preventDefault();
+	    });
+	});
+
+	/**
+	 * Geolocation configuration
+	 */
+	var JQM = JQM || {};
+	JQM.geo = {
+		location: "",
+		zip: "",
+		startIndex: "",
+
+	    showMore: function(latlng) {
+	    	$.mobile.loading( "show" );
+	    	JQM.geo.location = latlng;
+
+			$.ajax({
+			  	url: "showMore.html?lat="+JQM.geo.location.coords.latitude+"&lon="+JQM.geo.location.coords.longitude+"&zip="+JQM.geo.zip+"&startIndex="+JQM.geo.startIndex,
+			  	success: function( response ) {
+			  		var $listResults = $( "#list-results" );
+					$listResults.find( "#show-more" ).before(response);
+					$listResults.listview( "refresh" );
+					$.mobile.loading( 'hide' );
+			  	},
+				timeout: 6000,  // Timeout after 6 seconds
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log("Error, textStatus: " + textStatus + " errorThrown: "+ errorThrown);
+					$.mobile.loading( "hide" );
+				}
+			});
+	    }
+	};
+	</script>
+</head>
     <body>
         <div data-role="page" id="map-page" data-url="map-page">
             <div data-role="header" data-position="fixed">
@@ -26,13 +106,19 @@
                 <div id="list-canvas">
                     <ul id="list-results" data-role="listview">
                         <li data-marker-info="44.811805,-93.176352">
-                            <div style="display:none;">
+                           <div style="display:block">
                                 <div class="ui-gmap-marker-info">
-                                    <h1><a id="gmap-marker-link" href="#">גירף בר גריל אסייתי</a></h1>
-                                    <p>8888 Fast Rd</p>
+                                    <a id="gmap-marker-link" href="#">
+                                        <table> 
+                                            <td><img src="../images/toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
+                                            <td><img src="../images/door.jpg" alt="" id="door_photo" class="centerimg"></td>
+                                            <td><img src="../images/wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
+                                            <td><img src="../images/parking.png" alt="" id="parking_photo" class="centerimg"></td>        
+                                        </table>
+                                    </a>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="restaurant.html">
                                 <h1 class="ui-gmap-marker-title wrap">גירף בר גריל אסייתי</h1>
                                 <div class="ui-li-count">
                                     <span>כ 500 מטר ממיקומך</span>
@@ -40,10 +126,16 @@
                             </a>
                         </li>
                         <li data-marker-info="44.788673,-93.205671">
-                            <div style="display:none;">
+                            <div style="display:block">
                                 <div class="ui-gmap-marker-info">
-                                    <h1><a id="gmap-marker-link" href="#">North Memorial Care</a></h1>
-                                    <p>8398 Jefferson Ct</p>
+                                    <a id="gmap-marker-link" href="#">
+                                        <table> 
+                                            <td><img src="../images/toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
+                                            <td><img src="../images/door.jpg" alt="" id="door_photo" class="centerimg"></td>
+                                            <td><img src="../images/wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
+                                            <td><img src="../images/parking.png" alt="" id="parking_photo" class="centerimg"></td>        
+                                        </table>
+                                    </a>
                                 </div>
                             </div>
                             <a href="#">
@@ -54,10 +146,16 @@
                             </a>
                         </li>
                         <li data-marker-info="44.750453,-93.204766">
-                            <div style="display:none;">
+                           <div style="display:block">
                                 <div class="ui-gmap-marker-info">
-                                    <h1><a id="gmap-marker-link" href="#">Fast Clinic-Newtown</a></h1>
-                                    <p>34555 Dove Trl</p>
+                                    <a id="gmap-marker-link" href="#">
+                                        <table> 
+                                            <td><img src="../images/toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
+                                            <td><img src="../images/door.jpg" alt="" id="door_photo" class="centerimg"></td>
+                                            <td><img src="../images/wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
+                                            <td><img src="../images/parking.png" alt="" id="parking_photo" class="centerimg"></td>        
+                                        </table>
+                                    </a>
                                 </div>
                             </div>
                             <a href="details.html?locationId=4719">
@@ -68,10 +166,16 @@
                             </a>
                         </li>
                         <li data-marker-info="44.736285,-93.207487">
-                            <div style="display:none;">
+                            <div style="display:block">
                                 <div class="ui-gmap-marker-info">
-                                    <h1><a id="gmap-marker-link" href="#">Brad's Medical Clinic</a></h1>
-                                    <p>3444 Great Ave</p>
+                                    <a id="gmap-marker-link" href="#">
+                                        <table> 
+                                            <td><img src="../images/toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
+                                            <td><img src="../images/door.jpg" alt="" id="door_photo" class="centerimg"></td>
+                                            <td><img src="../images/wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
+                                            <td><img src="../images/parking.png" alt="" id="parking_photo" class="centerimg"></td>        
+                                        </table>
+                                    </a>
                                 </div>
                             </div>
                             <a href="#">
@@ -82,10 +186,16 @@
                             </a>
                         </li>
                         <li data-marker-info="44.723595,-93.176812">
-                            <div style="display:none;">
+                           <div style="display:block">
                                 <div class="ui-gmap-marker-info">
-                                    <h1><a id="gmap-marker-link" href="#">Super Clinics</a></h1>
-                                    <p>15560 Pilot Rd</p>
+                                    <a id="gmap-marker-link" href="#">
+                                        <table> 
+                                            <td><img src="../images/toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
+                                            <td><img src="../images/door.jpg" alt="" id="door_photo" class="centerimg"></td>
+                                            <td><img src="../images/wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
+                                            <td><img src="../images/parking.png" alt="" id="parking_photo" class="centerimg"></td>        
+                                        </table>
+                                    </a>
                                 </div>
                             </div>
                             <a href="#">

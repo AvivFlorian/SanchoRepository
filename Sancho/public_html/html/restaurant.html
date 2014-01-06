@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> 
-        
+
         <link rel="stylesheet" href="../css/restaurant.css" />
     </head>
     <body>
@@ -16,16 +16,10 @@
             <a href="search.html"  data-role="button" data-inline="true" data-icon="back" data-theme="a" >חזור</a>
             <a href="http://www.giraffe.co.il/" id="res_website" data-role="button" data-inline="true" data-mini="true">אתר המסעדה</a>
             </br>
+            <label id="res_address">הסדנאות 9 הרצליה</label>
             </br>
         </div>
         <div>
-            <article id="res_address">
-                <label id="res_name">הסדנאות 9 הרצליה</label>
-                </br>
-
-                </br>
-                </br>
-            </article>
             <article id="access_title" >
                 <h4 id="res_name"> נגישות המקום</h4>
             </article>
@@ -49,20 +43,27 @@
                             </br></br></td>        
                     </tr>
                 </table>
-                
-            
-            
+
+
+
                 <div align="left">
-                     <a href="#popupGir" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="../images/pic_gallery.png" width="60" height="60"></a>
-                        <label id="res_name">תמונות מהמקום</label>
-                   
+                    <a href="#popupGir" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="../images/pic_gallery.png" width="60" height="60"></a>
+                    <label id="res_name">תמונות מהמקום</label>
+
                     <a href="#" data-theme="" id="update_icon" class="centerimg"> <img src="../images/update_icon.jpg" width="60" height="60"></a>
-                        <label id="res_name">עדכן</label>
-                    </div>
-                    <div data-role="popup" id="popupGir" data-overlay-theme="a" data-theme="d" data-corners="false">
-                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popphoto" src="../images/gir_in.jpg" style="max-height:512px;" alt="#">
-                    </div>
+                    <label id="res_name">עדכן</label>
+                </div>
+                <div data-role="popup" id="popupGir" data-overlay-theme="a" data-theme="d" data-corners="false">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popphoto" src="../images/gir_in.jpg" style="max-height:512px;" alt="#">
+                </div>
+                <a href="#popupGallery" data-rel="popup" data-position-to="window" data-role="button" data-theme="b" data-inline="true">גלרייה</a>
+
+                <div data-role="popup" id="popupGallery" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
+                    <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                    <iframe src="http://wowslider.com/html5-image-slider-box-stack-v-demo.html" width="580" height="420" seamless></iframe>
+                </div>
             </article>
+
             <article id="text_reviews_title" >
                 <h4 id="res_name"> ביקורות הגולשים</h4>
             </article>
