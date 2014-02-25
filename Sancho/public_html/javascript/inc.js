@@ -1,7 +1,3 @@
-function search() {
-        alert($("#search1").val());
-}
-
 // PhoneGap
 function getLocation() {
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -20,9 +16,7 @@ function onSuccess(position) {
 	
 	var latitude =position.coords.latitude;
 	var longitude =position.coords.longitude;
-        alert(latitude);
-        alert(longtitude);
-    var mapOptions = {
+	var mapOptions = {
 	  center: new google.maps.LatLng(latitude, longitude),
 	  zoom: 15,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -37,18 +31,3 @@ function onError(error) {
 	element.innerHTML = 'code: '    + error.code    + '\n' +
 			'message: ' + error.message + '\n';
 }
-$(document).ready(function() {       
-    $("#search1").keyup(function(event){
-    if(event.keyCode === 13){
-        search();
-    }
-    getLocation();
-    
-    
-    $("#submit_search").click(function(){
-        
-            search();   
-});
- 
-});});
-
