@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html>
-<body>
-<p id="demo">Click the button to get your coordinates:</p>
-<button onclick="getLocation()">Try It</button>
-<script>
-var x=document.getElementById("demo");
-function getLocation()
-  {
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
-    }
-  else{x.innerHTML="Geolocation is not supported by this browser.";}
-  }
-function showPosition(position)
-  {
-  x.innerHTML="Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;	
-  }
-</script>
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+    </head> 
+    <body>
+        <p id="demo">Click the button to get your coordinates:</p>
+        <button onclick="getLocation()">Try It</button>
+        <script>
+            var x = document.getElementById("demo");
+            function getLocation()
+            {
+                if (navigator.geolocation)
+                {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+                else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+            function showPosition(position) {
+                //console.log(position, position.coords.longitude);
+                
+                // call server
+                $.getJSON("http://avivshay.milab.idc.ac.il/json.php", 
+                    {
+                        'latitude': position.coords.latitude,
+                        'longitude': position.coords.longitude            
+                    }, 
+                    function(data) {
+                            console.log(data);
+                            var items = [];
+                            $.each(data, function(key, val) {
+                                console.log('aviv', key,val);
+                                items.push("<li id='" + key + "'>" + val.name + "</li>");
+                                $("<div>"+val.name+"</div>").prependTo("body");
+                            });
+                            alert('aviv');
+console.log(items);
+                            $("<ul/>", {
+                                "class": "my-new-list",
+                                html: items.join("")
+                            }).prependTo("body");
+                        });
+                //x.innerHTML = "Latitude: " + position.coords.latitude +
+                  //      "<br>Longitude: " + position.coords.longitude;
+            }
+        </script>
+    </body>
 </html>
