@@ -23,14 +23,16 @@ body{text-align:  right}
 
     border-collapse:collapse;
 }
-tr
-{
-    border-bottom: 1px solid #000;
-}
+
 tr.last
 {
     border-bottom: none;
 }
+
+.mycell {
+    max-width: 10px;
+}
+
 #search1{
     text-align: center;
 
@@ -44,3 +46,16 @@ tr.last
     width: 100%;
 
 }
+
+#table td {padding: 0px; margin: 0px;}
+#table {border-spacing: 0px;}
+
+
+#searchTable {
+    padding-right: 15px; 
+    padding-top: 15px; 
+    background-color: black; /* Optional - to visualize padding and line leading... */
+}
+
+
+

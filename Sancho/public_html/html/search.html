@@ -1,104 +1,129 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Sancho - search</title>
+        <title>FreeWAy - search</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
-       
-        <link rel="stylesheet" href="../css/search.css" />
-        <script src="../javascript/search.js"></script> 
+
+        <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
+        -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="../javascript/freeway.js"></script>
+
+        <?php /*?>
+        <!--  <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
+  
+  
+          <link rel="stylesheet" href="../css/search.css" />
+          <script src="../javascript/search.js"></script>
+        -->
     </head>
 
-    <body> 
-        <div data-role="page">  
-            <div>
-                <img src="icon.png" alt="" id="icon_img" class="centerimg">
+    <body onload="getLocation()" style="border:0; margin:0; padding: 0;"> 
+
+
+        <div data-role="page" id="app">  
+
+            <!--The header div -->
+            <div style="background-color: #2bb98b; height: 50px; color: white; line-height: 50px; text-align: center;">
+                &lt; FreeWay 
+                <input type="search" name="searchField" id="searchField" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
             </div>
 
-            <div>
-                <input type="search" name="search1" id="search1" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
-                <!--<input type="submit" value="חפש" id="submit_search">-->
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>   
-             <a href="location.html" data-transition="slide">
-                      Location
-                  </a>
-            <section>
-                <article id="res_title">
-                    <table border="0" style="width:100%;" align="center">
-                        <tr>
-                            <td style="width:50%;" align="center"> <a href="demosearch.html" data-role="button" data-inline="true">הצג על מפה</a> </td>
-                            <td style="width:50%;" align="center"><h1>מסעדות קרובות אלי</h1></td>
+            <!--The background photo div -->
+            <div id="place">
+                <div style="background:#efefef url('/photos/place.jpeg') no-repeat center;">
+                    <div class="name" style="text-align: center; margin-bottom: 5px; font-size:28px; color: white; font-family: Arial;"></div>
+                    <div class="address" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
+                    <div class="phone" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
+                    <div class="url" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
+                </div>
 
-                        </tr>
-                    </table>
-                </article>
-            </section>
+            </div>
+            <!--The icons div -->
+            <div style="text-align: center;">
+                <div style="clear:both; margin-bottom: 20px; font-size:0;">
+                    <a href="#">
+                        <img src="" id="parking" style="width: 50px; height: 50px; margin-right: 35px;" />
+                    </a>
+                    <a href="#">
+                        <img src="" id="entrance" style="width: 50px; height: 50px; margin-right: 35px;" />
+                    </a>
+                    <a href="#">
+                        <img src="" id="inside" style="width: 50px; height: 50px; margin-right: 35px;" />
+                    </a>
+                    <a href="#">
+                        <img src="" id="restroom" style="width: 50px; height: 50px;" />
+                    </a>
+                </div>
+                <a style="height: 20px; width:340px; border: 2px solid #99d7be; display: inline-block;">עריכה</a>
+            </div>
+
+            <!--The google map div -->
+            <div  style="background:#efefef; height: 65px; color: white;">
+
+            </div>
             
-            <div>
-                <section id="main_section">
-                    <table id="search_table" border="0" style="width:100%;" align="right">
-                        <tr>
-                            <td><img src="toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
-                            <td><img src="door.jpg" alt="" id="door_photo" class="centerimg"></td>
-                            <!--<td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td><!-->
-                            <td>
-                                <img src="wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
-                            <td><img src="parking.png" alt="" id="parking_photo" class="centerimg"></td>
-                            <td style="width:50%;" align="center"><a href="restaurant.html" data-theme="" id="res_photo" class="centerimg"> <img src="giraff.jpg" width="180" height="140"></a>
-                                <label id="res_name">ג'ירף בר גריל אסייתי</label>
-                                <p><label id="dis_from_loc">כ 500 מטר ממיקומך</label></p></td>             
-                        </tr>
+            <!--The pictures div -->
+            <div  style="background:#5b5754; height: 80px; color: white;">
 
-
-                        <!--  <td> <label id="res_address">כתובת המסעדה</label></td>!-->
-
-
-                        <tr></tr>
-                        <tr>
-                            <td><img src="toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
-                            <td><img src="door.jpg" alt="" id="door_photo" class="centerimg"></td>
-                            <!--<td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td><!-->
-                            <td><img src="wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
-                            <td><img src="parking.png" alt="" id="parking_photo" class="centerimg"></td>
-                            <td style="width:50%;" align="center"> <img src="moses.jpg" alt="" id="res_photo" class="centerimg">
-                                <label id="res_name">מוזס מטבח אמריקאי</label> 
-                                <p><label id="dis_from_loc">כ 100 מטר ממיקומך</label></p></td>
-                        </tr>
-
-
-
-
-                        <!--  <td> <label id="res_address">כתובת המסעדה</label></td>!-->
-
-
-                        <tr></tr>
-                        <tr>
-                            <td><img src="toilets.png" alt="" id="toilets_photo" class="centerimg"></td>
-                            <td><img src="door.jpg" alt="" id="door_photo" class="centerimg"></td>
-                            <!--<td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td><!-->
-                            <td><img src="wheelchairmovementicon.png" alt="" id="wheelchairmovementicon_photo" class="centerimg"></td>
-                            <td><img src="parking.png" alt="" id="parking_photo" class="centerimg"></td>
-                            <td style="width:50%;" align="center"> <img src="benedict.jpg" alt="" id="res_photo" class="centerimg">
-                                <label id="res_name">בנדיקט ארוחות בוקר</label>
-                                <p><label id="dis_from_loc">כ1.6 קילומטר ממיקומך</label></p></td>             
-                        </tr>
-
-                        <!--  <td> <label id="res_address">כתובת המסעדה</label></td>!-->
-
-
-                    </table>
-            </div>      
+            </div>
+            <!--The comments header div -->
+            <div  style="background:#99d7be; height: 50px; color: white;  line-height: 50px;">
+                ביקורות הגולשים
+                <a href="#">
+                    <img src="" style="width: 30px; height: 20px;" />
+                </a>
+                כתוב ביקורת
+            </div>
+            <!--The comments div -->
+            <div  style="background:#ffffff; height: 220px; color: black;">
         </div>
-    </body>
+
+
+
+<!--
+        <div id="main_section" style="display: none;">
+            <div>
+                <input type="search" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
+                <!--<input type="submit" value="חפש" id="submit_search">
+            </div>
+            <div id='content'>   
+                <article id="res_icons">
+                    <table border="0" style="width:80%;" align="center">
+                        <tr>
+                            <td style="width:50%;" align="center"><img src="../images/toilets_icon.jpg" alt="" id="restroom" class="centerimg">
+                                <p><label id="toilet">שירותים נגישים</label></p>
+                                </br></br></td>
+                            <td style="width:50%;" align="center"><img src="../images/entrance_icon.jpg" alt="" id="entrance" class="centerimg">
+                                <p><label id="entrance">כניסה נגישה</label></p>
+                                </br></br></td>
+                            <!--<td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;" align="center"><img src="../images/space_icon.jpg" alt="" id="inside" class="centerimg">
+                                <p><label id="inside">תנועה קלה במקום</label></p>
+                                </br></br></td>
+                            <td style="width:50%;" align="center"><img src="" alt="" id="parking" class="centerimg">
+                                <p><label id="parking">קיימת חניה</label></p>
+                                </br></br></td>        
+                        </tr>
+                    </table>
+                    <div align="left">
+                        <a href="#popupGir" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="pic_gallery.png" width="60" height="60"></a>
+                        <label id="res_name">תמונות מהמקום</label>
+                    </div>
+                    <div data-role="popup" id="popupGir" data-overlay-theme="a" data-theme="d" data-corners="false">
+                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popphoto" src="gir_in.jpg" style="max-height:512px;" alt="#">
+                    </div>
+                </article>
+                <article id="res_comments" >
+                    <h1 id="res_name"> ביקורות הגולשים</h1>
+                    <h4></h4>
+                </article>
+            </div>
+        </div>
+        -->
+    </div>
+</body>
 </html>
