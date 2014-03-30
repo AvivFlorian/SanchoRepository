@@ -21,25 +21,38 @@
 
     <body onload="getLocation()" style="border:0; margin:0; padding: 0;"> 
 
-
-        <div data-role="page" id="app">  
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(32.0833, 34.8000), 
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    
+        <div data-role="page" id="app" style="display: none;">  
 
             <!--The header div -->
             <div style="background-color: #2bb98b; height: 50px; color: white; line-height: 50px; text-align: center;">
                 &lt; FreeWay 
-                <input type="search" name="searchField" id="searchField" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
+                <input style="width:500px; border-radius:16px; position:relative; align:center" type="search" name="searchField" id="searchField" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
             </div>
 
             <!--The background photo div -->
-            <div id="place">
+            <div id="place" style="background:#efefef; height: 155px;">
                 <div style="background:#efefef url('/photos/place.jpeg') no-repeat center;">
                     <div class="name" style="text-align: center; margin-bottom: 5px; font-size:28px; color: white; font-family: Arial;"></div>
                     <div class="address" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
                     <div class="phone" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
                     <div class="url" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
                 </div>
-
             </div>
+          
             <!--The icons div -->
             <div style="text-align: center;">
                 <div style="clear:both; margin-bottom: 20px; font-size:0;">
@@ -60,19 +73,19 @@
             </div>
 
             <!--The google map div -->
-            <div  style="background:#efefef; height: 65px; color: white;">
-
+            <div id="map-canvas" style="background:#efefef; height: 65px; color: white;">
+                
             </div>
             
             <!--The pictures div -->
             <div  style="background:#5b5754; height: 80px; color: white;">
-
+                <img src="../images/restaurant.jpg" id="entrance" style="width: 50px; height: 50px; margin-right: 35px;" />
             </div>
             <!--The comments header div -->
             <div  style="background:#99d7be; height: 50px; color: white;  line-height: 50px;">
                 ביקורות הגולשים
                 <a href="#">
-                    <img src="" style="width: 30px; height: 20px;" />
+                    <img src="" style="width: 30px; height: 10px;" />
                 </a>
                 כתוב ביקורת
             </div>
@@ -82,11 +95,11 @@
 
 
 
-<!--
+
         <div id="main_section" style="display: none;">
             <div>
                 <input type="search" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
-                <!--<input type="submit" value="חפש" id="submit_search">
+               <input type="submit" value="חפש" id="submit_search">
             </div>
             <div id='content'>   
                 <article id="res_icons">
@@ -98,7 +111,7 @@
                             <td style="width:50%;" align="center"><img src="../images/entrance_icon.jpg" alt="" id="entrance" class="centerimg">
                                 <p><label id="entrance">כניסה נגישה</label></p>
                                 </br></br></td>
-                            <!--<td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td>
+                            <td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td>
                         </tr>
                         <tr>
                             <td style="width:50%;" align="center"><img src="../images/space_icon.jpg" alt="" id="inside" class="centerimg">
@@ -123,7 +136,7 @@
                 </article>
             </div>
         </div>
-        -->
+       
     </div>
 </body>
 </html>

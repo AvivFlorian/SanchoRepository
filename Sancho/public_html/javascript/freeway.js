@@ -11,14 +11,16 @@ $(document).on("click", ".place-btn", function(e) {
             places.current_place = val;
             console.log(places.current_place);
             $("#place").find(".name").text(places.current_place.name);
-            $("#main_section").show();
+            $("#place").find(".address").text(places.current_place.address);
+            $("#place").find(".phone").text(places.current_place.phone);
+            $("#place").find(".url").text(places.current_place.url);
+            $("#app").show();
             $(".my-new-list").hide();
             $("#logoPic").hide();
-            $("#searchField").hide();
             $("#parking").attr('src', "../images/parking_icon" + places.current_place.parking + ".jpg");
-            $("#entrance").attr('src', "../images/entrance_icon" + places.current_place.parking + ".jpg");
-            $("#inside").attr('src', "../images/inside_icon" + places.current_place.parking + ".jpg");
-            $("#restroom").attr('src', "../images/restroom_icon" + places.current_place.parking + ".jpg");
+            $("#entrance").attr('src', "../images/entrance_icon" + places.current_place.entrance + ".jpg");
+            $("#inside").attr('src', "../images/inside_icon" + places.current_place.inside + ".jpg");
+            $("#restroom").attr('src', "../images/restroom_icon" + places.current_place.restroom + ".jpg");
         }
     });
 });
@@ -52,7 +54,7 @@ function showPosition(position) {
         $.each(data, function(key, val) {
             console.log(key, val);
             items.push("<li id='" + key + "'>" +
-                    "<a onclick=\"createResPage('" + val.name + "', '" + val.parking + "', '" + val.entrance + "', '" + val.inside + "', '" + val.restroom + "', '" + val.comments + "')\" data-place-id=\"" + val.google_place_id + "\" href=\"http://avivshay.milab.idc.ac.il/json.php?cmd=PLACE&place_id=" + val.google_place_id + "\" class=\" ui-btn ui-btn-icon-right ui-icon-carat-r place-btn\">" + val.name + "</a></li>");
+                    "<a data-place-id=\"" + val.google_place_id + "\" href=\"http://avivshay.milab.idc.ac.il/json.php?cmd=PLACE&place_id=" + val.google_place_id + "\" class=\" ui-btn ui-btn-icon-right ui-icon-carat-r place-btn\">" + val.name + "</a></li>");
         });
 
 
@@ -96,5 +98,4 @@ function changeIcon()
                 'parking_icon': 'true'
             });
 }
-
-
+//Showing on the map
