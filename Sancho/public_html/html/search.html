@@ -10,49 +10,49 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="../javascript/freeway.js"></script>
 
-        <?php /*?>
+
         <!--  <script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
-  
-  
-          <link rel="stylesheet" href="../css/search.css" />
           <script src="../javascript/search.js"></script>
         -->
+        <link rel="stylesheet" href="../css/freeway.css" />
     </head>
 
     <body onload="getLocation()" style="border:0; margin:0; padding: 0;"> 
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(32.0833, 34.8000), 
-          zoom: 15
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-    
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false">
+        </script>
+        <script type="text/javascript">
+            function initialize() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(32.0833, 34.8000),
+                    zoom: 15
+                };
+                var map = new google.maps.Map(document.getElementById("map-canvas"),
+                        mapOptions);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
+        <!--The header div -->
+        <div style="background-color: #2bb98b; height: 50px; color: white; line-height: 50px; text-align: center;">
+            &lt; FreeWay 
+            <input style="width:500px; border-radius:16px; position:relative; align:center" type="search" name="searchField" id="searchField" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
+        </div>
+
+        <!--The restaurant div -->
         <div data-role="page" id="app" style="display: none;">  
 
-            <!--The header div -->
-            <div style="background-color: #2bb98b; height: 50px; color: white; line-height: 50px; text-align: center;">
-                &lt; FreeWay 
-                <input style="width:500px; border-radius:16px; position:relative; align:center" type="search" name="searchField" id="searchField" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
-            </div>
-
             <!--The background photo div -->
-            <div id="place" style="background:#efefef; height: 155px;">
-                <div style="background:#efefef url('/photos/place.jpeg') no-repeat center;">
+            <div id="place">
+                <div style="background-image:url('../images/restaurant1.jpg') no-repeat center;">
+                    </br>
                     <div class="name" style="text-align: center; margin-bottom: 5px; font-size:28px; color: white; font-family: Arial;"></div>
                     <div class="address" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
                     <div class="phone" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
                     <div class="url" style="text-align: center; margin-bottom: 5px; font-size:14px; color: white; font-family: Arial;"></div>
                 </div>
             </div>
-          
+
             <!--The icons div -->
             <div style="text-align: center;">
                 <div style="clear:both; margin-bottom: 20px; font-size:0;">
@@ -74,69 +74,32 @@
 
             <!--The google map div -->
             <div id="map-canvas" style="background:#efefef; height: 65px; color: white;">
-                
+
             </div>
-            
+
             <!--The pictures div -->
             <div  style="background:#5b5754; height: 80px; color: white;">
-                <img src="../images/restaurant.jpg" id="entrance" style="width: 50px; height: 50px; margin-right: 35px;" />
-            </div>
-            <!--The comments header div -->
-            <div  style="background:#99d7be; height: 50px; color: white;  line-height: 50px;">
-                ביקורות הגולשים
-                <a href="#">
-                    <img src="" style="width: 30px; height: 10px;" />
+                <a href="addPic()">
+                    <img src="../images/add_pic.jpg" id="entrance" style="width: 100px; height: 80px; margin-right: 0px;" />
                 </a>
-                כתוב ביקורת
+                <img src="../images/res1.jpg" id="entrance" style="width: 100px; height: 80px; margin-right: 0px;" />
+                <img src="../images/res2.jpg" id="entrance" style="width: 100px; height: 80px; margin-right: 0px;" />
+            </div>
+
+            <!--The comments header div -->
+            <div  style="background:#f5f4ef; height: 50px; color: white;  line-height: 50px; text-align: center;">
+                <a href="#">
+                    <img src="../images/write_comments.jpg" id="write_comments" style="width: 150px; height: 50px;  margin-left: 20px;" />
+                </a>
+                <a href="#">
+                    <img src="../images/comments.jpg" id="comments" style="width: 180px; height: 30px; margin-left: 200px; " /> 
+                </a>
             </div>
             <!--The comments div -->
             <div  style="background:#ffffff; height: 220px; color: black;">
-        </div>
+                <div class="comments" style="text-align: center; margin-bottom: 5px; font-size:28px; color: black; font-family: David;"></div>
 
-
-
-
-        <div id="main_section" style="display: none;">
-            <div>
-                <input type="search" onchange="getValue()" placeholder="חפש מקומות נגישים לפי שם/סוג/אזור">
-               <input type="submit" value="חפש" id="submit_search">
-            </div>
-            <div id='content'>   
-                <article id="res_icons">
-                    <table border="0" style="width:80%;" align="center">
-                        <tr>
-                            <td style="width:50%;" align="center"><img src="../images/toilets_icon.jpg" alt="" id="restroom" class="centerimg">
-                                <p><label id="toilet">שירותים נגישים</label></p>
-                                </br></br></td>
-                            <td style="width:50%;" align="center"><img src="../images/entrance_icon.jpg" alt="" id="entrance" class="centerimg">
-                                <p><label id="entrance">כניסה נגישה</label></p>
-                                </br></br></td>
-                            <td><img src="../images/parking.jpg" alt="" id="des_from_parking_photo" class="centerimg"></td>
-                        </tr>
-                        <tr>
-                            <td style="width:50%;" align="center"><img src="../images/space_icon.jpg" alt="" id="inside" class="centerimg">
-                                <p><label id="inside">תנועה קלה במקום</label></p>
-                                </br></br></td>
-                            <td style="width:50%;" align="center"><img src="" alt="" id="parking" class="centerimg">
-                                <p><label id="parking">קיימת חניה</label></p>
-                                </br></br></td>        
-                        </tr>
-                    </table>
-                    <div align="left">
-                        <a href="#popupGir" data-rel="popup" data-position-to="window" data-transition="fade"><img class="popphoto" src="pic_gallery.png" width="60" height="60"></a>
-                        <label id="res_name">תמונות מהמקום</label>
-                    </div>
-                    <div data-role="popup" id="popupGir" data-overlay-theme="a" data-theme="d" data-corners="false">
-                        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a><img class="popphoto" src="gir_in.jpg" style="max-height:512px;" alt="#">
-                    </div>
-                </article>
-                <article id="res_comments" >
-                    <h1 id="res_name"> ביקורות הגולשים</h1>
-                    <h4></h4>
-                </article>
             </div>
         </div>
-       
-    </div>
-</body>
+    </body>
 </html>

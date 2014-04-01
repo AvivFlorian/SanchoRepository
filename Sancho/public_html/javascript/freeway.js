@@ -4,6 +4,16 @@ var places = {};
 
 $(document).on("click", ".place-btn", function(e) {
     e.preventDefault();
+    
+    // Calls the server for more information (phone and picture)
+ // $.getJSON("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + val.google_reference + "&sensor=true&key=AIzaSyArToMuYtcxnymrrBjf2D7YabV2HjpoZuU",
+   //         {
+     //           'phone': phone,
+       //         'placePhoto': placePhoto       
+            //});
+    
+    
+
     var self = this;
     console.log($(this).attr("data-place-id"));
     $.each(places.data, function(key, val) {
@@ -56,11 +66,8 @@ function showPosition(position) {
             items.push("<li id='" + key + "'>" +
                     "<a data-place-id=\"" + val.google_place_id + "\" href=\"http://avivshay.milab.idc.ac.il/json.php?cmd=PLACE&place_id=" + val.google_place_id + "\" class=\" ui-btn ui-btn-icon-right ui-icon-carat-r place-btn\">" + val.name + "</a></li>");
         });
-
-
         $("<ul/>", {
             "class": "my-new-list",
-            style: 'margin-top:350px',
             html: items.join("")
         }).prependTo("body");
         //console.log(data);
